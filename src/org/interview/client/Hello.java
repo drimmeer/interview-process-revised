@@ -193,6 +193,22 @@ public class Hello implements EntryPoint {
             }
         });
 
+	countCallButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+		    countCallService.countCall(numberOfCompletedCall, new AsyncCallback<Integer>() {
+	        	@Override
+		        public void onFailure(Throwable caught) {
+		            caught.printStackTrace();
+	        	    Window.alert("Error : " + caught.getMessage());
+		        }
+		        public void onSuccess(Integer result) {
+	        		numberOfCompletedCall=result;
+		        };
+		    });
+		    countCallLabel.setText("Total successful calls: "+numberOfCompletedCall);
+		}
+        });
 
         /* Layout for person information*/
         FlexTable layout = new FlexTable();
