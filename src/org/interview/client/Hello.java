@@ -184,6 +184,16 @@ public class Hello implements EntryPoint {
         sendButton.addClickHandler(handler);
         nameField.addKeyUpHandler(handler);
 
+	clearPersonButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                //clear the person's text boxes
+		personId.setText("");
+		personName.setText("");
+            }
+        });
+
+
         /* Layout for person information*/
         FlexTable layout = new FlexTable();
         layout.setCellSpacing(6);
